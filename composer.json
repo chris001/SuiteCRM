@@ -42,7 +42,8 @@
     "squizlabs/php_codesniffer": "^2.8",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.3.2",
     "frenck/php-compatibility": "^7.1",
-    "leafo/scssphp": "dev-master"
+    "leafo/scssphp": "dev-master",
+    "friendsofphp/php-cs-fixer": "~2"
   },
   "prefer-stable": true,
   "autoload": {
@@ -51,3 +52,4 @@
     }
   }
 }
+
