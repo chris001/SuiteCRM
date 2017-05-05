@@ -37,7 +37,6 @@
     "phpunit/phpunit": "^4.0",
     "symfony/yaml": "^2.1",
     "mikey179/vfsStream": "^1.4",
-    "friendsofphp/php-cs-fixer": "dev-master",
     "squizlabs/php_codesniffer": "^2.8",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.3.2",
     "frenck/php-compatibility": "^7.1",
