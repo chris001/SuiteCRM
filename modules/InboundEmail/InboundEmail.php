@@ -4864,6 +4864,20 @@ class InboundEmail extends SugarBean
         $subjectDecoded = $this->getImap()->MimeHeaderDecode($subject);
 
         $ret = '';
+		if(!is_array($subjectDecoded)){
+			// regex to extract all the MIME parts (Like GBK)
+			preg_match_all("/=\?[^?]+\?[B|Q]\?[^?]+\?=/", $subjectDecoded, $matches);
+			if (!empty($matches[0])) {
+				$allEncodedParts = array_merge(...$matches);
+				foreach ($allEncodedParts as $part) {
+				    //decode the GBK MIME
+					$ret.= mb_decode_mimeheader($part);
+				}
+				return $ret;
+			} else {
+				return $subjectDecoded;
+			}
+		}
         foreach ($subjectDecoded as $object) {
             if ($object->charset != 'default') {
                 $ret .= $this->handleCharsetTranslation($object->text, $object->charset);
@@ -4871,7 +4885,6 @@ class InboundEmail extends SugarBean
                 $ret .= $object->text;
             }
         }
-
         return $ret;
     }
 
